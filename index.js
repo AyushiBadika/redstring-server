@@ -9,7 +9,7 @@ import eventRoutes from "./routes/event.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-mongoose
+await mongoose
   .connect(process.env.CONNECTION_STRING)
   .then(() => console.log("Connected to MongoDB!"))
   .catch((err) => console.log(err));
@@ -17,7 +17,7 @@ mongoose
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({ origin: "https://red-string-project.vercel.app", credentials: true }));
 const port = process.env.PORT || 3001;
 
 app.use("/api/user", userRoutes);
